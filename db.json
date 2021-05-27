@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "text": "Learn Reacjs",
+      "day": "Thirst",
+      "reminder": false,
+      "id": 2
+    },
+    {
+      "text": "Learn Reacjs",
+      "day": "Mondey",
+      "reminder": true,
+      "id": 4
+    },
+    {
+      "text": "Learn PHP 2",
+      "day": "Mondey",
+      "reminder": false,
+      "id": 5
+    }
+  ]
+}
