@@ -3,13 +3,13 @@
     {
       "text": "Learn Reacjs",
       "day": "Thirst",
-      "reminder": false,
+      "reminder": true,
       "id": 2
     },
     {
       "text": "Learn Reacjs",
       "day": "Mondey",
-      "reminder": true,
+      "reminder": false,
       "id": 4
     },
     {

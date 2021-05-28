@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'; 
 import Header from './components/Header.js';
 import Tasks from './components/Tasks.js';
-import { useState, useEffect } from 'react'
 import AskTask from './components/AskTask.js';
+import Footer from './components/Footer.js';
+import About from './components/About.js';
 
 
     const App = () => {
@@ -13,6 +16,7 @@ import AskTask from './components/AskTask.js';
             const tasksFromServer = await fetchTasks()
             setTasks(tasksFromServer)
         }
+
         getTasks()
     }, [] )
 
@@ -22,6 +26,7 @@ import AskTask from './components/AskTask.js';
         const data = await res.json()
         return data
     }
+
 
     //Fetch Task 
     const fetchTask = async (id) => {
@@ -87,14 +92,24 @@ import AskTask from './components/AskTask.js';
     }
 
     return (
-      <div className="flex justify-center px-96 py-44">
-          <section className="border w-full p-5">
-            <Header inputShow={inputShow} onShow={showInput} />
-            {inputShow.show === true ? <AskTask onAdd={addTask} /> : ''}
-            {/* <AskTask /> */}
-            {tasks.length > 0 ? <Tasks onToggle={toggleRemind} onDelete={deleteTask} tasks={tasks} /> : <h3 className="flex justify-center mt-4 text-gray-400">No records</h3>}
-          </section>
-      </div>
+        <Router>
+            <div className="flex flex-col justify-center px-96 py-44">
+                <section className="border w-full p-5">
+                    <Header inputShow={inputShow} onShow={showInput} />
+                    {inputShow.show === true ? <AskTask onAdd={addTask} /> : ''}
+                    {/* <AskTask /> */}
+                    <Route path='/' exact render={(props) => 
+                        <>
+                            {tasks.length > 0 ? <Tasks onToggle={toggleRemind} onDelete={deleteTask} tasks={tasks} /> : <h3 className="flex justify-center mt-4 text-gray-400">No records</h3>}
+                        </>
+                    } 
+                    />
+                    <Route  path='/about' component={About} />
+                </section>
+                
+                <Footer />
+            </div>
+        </Router>
     )
 }
 
